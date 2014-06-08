@@ -6,8 +6,8 @@ if [ `whoami` != root ]; then
     exit 1
 fi
 
-TAG="drupal/testbot-pgsql"
-NAME="drupaltestbot-db-pgsql"
+TAG="drupal/testbot-pgsql-centos"
+NAME="drupaltestbot-db-pgsql-centos"
 STALLED=$(docker ps -a | grep ${TAG} | grep Exit | awk '{print $1}')
 RUNNING=$(docker ps | grep ${TAG} | grep 5432 | awk '{print $1}')
 

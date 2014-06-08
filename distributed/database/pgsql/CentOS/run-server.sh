@@ -7,8 +7,8 @@ if [ `whoami` != root ]; then
 fi
 
 
-TAG="drupal/testbot-pgsql"
-NAME="drupaltestbot-db-pgsql"
+TAG="drupal/testbot-pgsql-centos"
+NAME="drupaltestbot-db-pgsql-centos"
 STALLED=$(docker ps -a | grep ${TAG} | grep Exit | awk '{print $1}')
 echo jsmith Stalled $STALLED
 RUNNING=$(docker ps | grep ${TAG} | grep 5432)
@@ -44,5 +44,5 @@ CONTAINER_ID=$(docker ps | grep ${TAG} | awk '{print $1}')
 
 echo "CONTAINER STARTED: $CONTAINER_ID"
 
-docker ps | grep "drupal/testbot-pgsql"
+docker ps | grep "$TAG"
 

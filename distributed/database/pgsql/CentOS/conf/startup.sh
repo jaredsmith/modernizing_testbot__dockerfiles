@@ -20,9 +20,10 @@ if [ ! -f ${PGDATA}/PG_VERSION ] ;
     pg_ctl -D ${PGDATA} start
 
     # create a new user
-    PGPASSWORD=drupaltestbotpw createuser -d -E -l -R -S drupaltestbot
+    psql -c "CREATE USER drupaltestbot WITH PASSWORD 'drupaltestbotpw';"
     # create a new default database for the user
-    createdb -O drupaltestbot drupaltestbot
+    psql -c "CREATE DATABASE drupaltestbot OWNER drupaltestbot TEMPLATE template0 ENCODING 'en-US.UTF-8' LC_CTYPE='en-US.UTF-8' LC_COLLATE='en-US.UTF-8';"
+
     # stop the cluster
     pg_ctl -D ${PGDATA} stop
 fi
